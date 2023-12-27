@@ -5,5 +5,7 @@
              version="3.0">
     <persistence-unit name="default">
 
+        <class>com.esp3.esp3.entities.User</class>
+        <class>com.esp3.esp3.entities.Car</class>
     </persistence-unit>
 </persistence>
