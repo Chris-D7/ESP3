@@ -1,7 +1,8 @@
 package com.esp3.esp3.servlets;
 
 import com.esp3.esp3.common.CarDto;
-import com.esp3.esp3.ejb.CarsBean;
+import com.esp3.esp3.common.UserDto;
+import com.esp3.esp3.ejb.UsersBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -10,19 +11,18 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Requests", value = "/Requests")
-public class Requests extends HttpServlet {
+@WebServlet(name = "Users", value = "/Users")
+public class Users extends HttpServlet {
 
     @Inject
-    CarsBean carsBean;
+    UsersBean usersBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<CarDto> cars=carsBean.findAllCars();
-        request.setAttribute("cars", cars);
-        request.setAttribute("numberOfFreeParkingSpots", 10);
-        request.setAttribute("activePage", "Cars");
-        request.getRequestDispatcher("/WEB-INF/pages/requests.jsp").forward(request,response);
+        List<UserDto> users=usersBean.findAllUsers();
+        request.setAttribute("users", users);
+        request.setAttribute("activePage", "Users");
+        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request,response);
     }
 
     @Override
