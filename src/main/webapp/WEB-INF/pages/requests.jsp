@@ -7,8 +7,8 @@
   <form method="POST" action="${pageContext.request.contextPath}/Requests">
     <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
       <a class=" btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddCar">Add Car</a>
-    </c:if>
     <button class="btn btn-danger" type="submit">Delete Cars</button>
+    </c:if>
     <div class="container text-center">
       <c:forEach var="car" items="${cars}">
         <div class="row">
@@ -25,6 +25,13 @@
           </div>
           <div class="col">
               ${car.ownerName}
+          </div>
+          <div class="col">
+            <img src="${pageContext.request.contextPath}/CarPhotos?id=${car.id}" width="48"/>
+          </div>
+          <div class="col">
+            <a class="btn btn-secondary"
+               href="${pageContext.request.contextPath}/AddCarPhoto?id=${car.id}" role="button">Add Photo</a>
           </div>
           <div class="col">
             <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
